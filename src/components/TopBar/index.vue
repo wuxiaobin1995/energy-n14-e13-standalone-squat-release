@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2022-07-28 10:25:39
- * @LastEditTime: 2023-11-21 11:11:25
+ * @LastEditTime: 2024-01-09 16:22:55
  * @Description : 顶部栏
 -->
 <template>
@@ -73,6 +73,7 @@ export default {
      */
     handleCommand(command) {
       switch (command) {
+        /* 开发者 */
         case '开发者':
           this.$prompt('请输入密码', '提示', {
             confirmButtonText: '确定',
@@ -89,6 +90,7 @@ export default {
             })
             .catch(() => {})
           break
+        /* 数据迁移 */
         case '数据迁移':
           this.$prompt('请输入密码', '提示', {
             confirmButtonText: '确定',
