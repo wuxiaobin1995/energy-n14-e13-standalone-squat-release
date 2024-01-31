@@ -1,7 +1,7 @@
 /*
  * @Author      : Mr.bin
  * @Date        : 2023-11-21 09:11:54
- * @LastEditTime: 2023-11-21 10:26:03
+ * @LastEditTime: 2024-01-31 09:12:43
  * @Description : Vuex
  */
 import Vue from 'vue'
@@ -19,7 +19,7 @@ export default new Vuex.Store({
       height: '', // 身高
       weight: '', // 体重
       birthday: '', // 出生日期
-      remarks: '', // 备注
+      angularRange: '', // 运动角度范围(°)，用于设定训练模式的角度范围，是一个相对值
       lastLoginTime: '' // 最后登录时间
     }
   },

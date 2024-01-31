@@ -1,43 +1,47 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2022-07-28 11:18:12
- * @LastEditTime: 2023-11-21 11:10:48
+ * @LastEditTime: 2024-01-31 17:50:52
  * @Description : home
 -->
 <template>
   <div class="home">
     <div class="wrapper">
-      <div class="main-photo">
-        <el-image class="item0" :src="src0" fit="scale-down"></el-image>
-      </div>
-      <div class="one">
-        <el-image
-          class="item item2"
-          :src="src2"
-          fit="scale-down"
-          @click.native="handleClick('src2')"
-        ></el-image>
-        <el-image
-          class="item item3"
-          :src="src3"
-          fit="scale-down"
-          @click.native="handleClick('src3')"
-        ></el-image>
-      </div>
-      <div class="two">
-        <el-image
-          class="item item1"
-          :src="src1"
-          fit="scale-down"
-          @click.native="handleClick('src1')"
-        ></el-image>
-        <el-image
-          class="item item4"
-          :src="src4"
-          fit="scale-down"
-          @click.native="handleClick('src4')"
-        ></el-image>
-      </div>
+      <!-- 用户管理 -->
+      <el-image
+        class="item"
+        :src="src1"
+        fit="scale-down"
+        @click.native="handleClick('src1')"
+      ></el-image>
+      <!-- 参数配置 -->
+      <el-image
+        class="item"
+        :src="src2"
+        fit="scale-down"
+        @click.native="handleClick('src2')"
+      ></el-image>
+      <!-- 运动测试 -->
+      <el-image
+        class="item"
+        :src="src3"
+        fit="scale-down"
+        @click.native="handleClick('src3')"
+      ></el-image>
+      <!-- 运动训练 -->
+      <el-image
+        class="item"
+        :src="src4"
+        fit="scale-down"
+        @click.native="handleClick('src4')"
+      ></el-image>
+      <!-- 数据记录 -->
+      <el-image
+        class="item"
+        :src="src5"
+        fit="scale-down"
+        @click.native="handleClick('src5')"
+      ></el-image>
 
       <!-- 数据记录选择弹窗 -->
       <el-dialog
@@ -94,6 +98,17 @@
           >
         </span>
       </el-dialog>
+
+      <!-- 设置运动角度范围 -->
+      <div class="set-angularRange">
+        <el-button
+          type="success"
+          size="small"
+          round
+          @click="handleSetAngularRange"
+          >运 动 角 度 范 围</el-button
+        >
+      </div>
     </div>
 
     <!-- 打开控制台按钮 -->
@@ -116,11 +131,11 @@ export default {
 
   data() {
     return {
-      src0: require('@/assets/img/Home/设备实物.png'),
-      src1: require('@/assets/img/Home/用户.png'),
-      src2: require('@/assets/img/Home/测试模块.png'),
-      src3: require('@/assets/img/Home/训练模块.png'),
-      src4: require('@/assets/img/Home/数据记录.png'),
+      src1: require('@/assets/img/Home/用户管理.png'),
+      src2: require('@/assets/img/Home/参数配置.png'),
+      src3: require('@/assets/img/Home/运动测试.png'),
+      src4: require('@/assets/img/Home/运动训练.png'),
+      src5: require('@/assets/img/Home/数据记录.png'),
 
       centerDialogVisible: false, // 数据记录选择弹窗
 
@@ -137,37 +152,45 @@ export default {
      * @param {String} src
      */
     handleClick(src) {
+      // 用户管理
       if (src === 'src1') {
         this.$router.push({
           path: '/user'
         })
-      } else if (src === 'src2') {
+      }
+      // 参数配置
+      else if (src === 'src2') {
         this.$router.push({
-          path: '/test'
+          path: '/set'
         })
-        // if (this.$store.state.currentUserInfo.userId) {
-        //   this.$router.push({
-        //     path: '/test-select'
-        //   })
-        // } else {
-        //   this.$confirm(
-        //     `检测到您还没有选择用户，请先到用户页面进行选择！`,
-        //     '提示',
-        //     {
-        //       type: 'warning',
-        //       center: true,
-        //       showCancelButton: false,
-        //       confirmButtonText: '确 定'
-        //     }
-        //   )
-        //     .then(() => {
-        //       this.$router.push({
-        //         path: '/user'
-        //       })
-        //     })
-        //     .catch(() => {})
-        // }
-      } else if (src === 'src3') {
+      }
+      // 运动测试
+      else if (src === 'src3') {
+        if (this.$store.state.currentUserInfo.userId) {
+          this.$router.push({
+            path: '/test-select'
+          })
+        } else {
+          this.$confirm(
+            `检测到您还没有选择用户，请先到用户页面进行选择！`,
+            '提示',
+            {
+              type: 'warning',
+              center: true,
+              showCancelButton: false,
+              confirmButtonText: '确 定'
+            }
+          )
+            .then(() => {
+              this.$router.push({
+                path: '/user'
+              })
+            })
+            .catch(() => {})
+        }
+      }
+      // 运动训练
+      else if (src === 'src4') {
         if (this.$store.state.currentUserInfo.userId) {
           this.$router.push({
             path: '/train-select'
@@ -190,7 +213,9 @@ export default {
             })
             .catch(() => {})
         }
-      } else if (src === 'src4') {
+      }
+      // 数据记录
+      else if (src === 'src5') {
         if (this.$store.state.currentUserInfo.userId) {
           this.centerDialogVisible = true
         } else {
@@ -211,6 +236,34 @@ export default {
             })
             .catch(() => {})
         }
+      }
+    },
+
+    /**
+     * @description: 设置运动角度范围
+     */
+    handleSetAngularRange() {
+      if (this.$store.state.currentUserInfo.userId) {
+        this.$router.push({
+          path: '/set-angularRange'
+        })
+      } else {
+        this.$confirm(
+          `检测到您还没有选择用户，请先到用户页面进行选择！`,
+          '提示',
+          {
+            type: 'warning',
+            center: true,
+            showCancelButton: false,
+            confirmButtonText: '确 定'
+          }
+        )
+          .then(() => {
+            this.$router.push({
+              path: '/user'
+            })
+          })
+          .catch(() => {})
       }
     },
 
@@ -268,39 +321,7 @@ export default {
     background-color: #ffffff;
     box-shadow: 0 0 10px #929292;
     position: relative;
-
-    .item0 {
-      width: 560px;
-    }
-    .item {
-      width: 130px;
-    }
-
-    .main-photo {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 20px;
-    }
-    .one {
-      margin-top: 30px;
-      @include flex(row, center, center);
-      .item2 {
-        margin-right: 150px;
-      }
-      .item3 {
-        margin-left: 150px;
-      }
-    }
-    .two {
-      @include flex(row, center, center);
-      .item1 {
-        margin-right: 260px;
-      }
-      .item4 {
-        margin-left: 260px;
-      }
-    }
+    @include flex(row, space-around, center);
 
     /* 数据记录选择弹窗 */
     .record-select-wrapper {
@@ -316,6 +337,13 @@ export default {
       position: absolute;
       left: 30px;
       top: 25px;
+    }
+
+    /* 设置运动角度范围 */
+    .set-angularRange {
+      position: absolute;
+      left: 30px;
+      top: 75px;
     }
   }
 

@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2022-07-28 10:25:39
- * @LastEditTime: 2024-01-09 16:22:55
+ * @LastEditTime: 2024-01-31 17:29:41
  * @Description : 顶部栏
 -->
 <template>
@@ -31,7 +31,13 @@
             <i class="el-icon-setting self"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item icon="el-icon-s-promotion" command="开发者"
+            <el-dropdown-item icon="el-icon-set-up" command="设置运动角度范围"
+              >设置运动角度范围</el-dropdown-item
+            >
+            <el-dropdown-item
+              icon="el-icon-s-promotion"
+              divided
+              command="开发者"
               >开发者</el-dropdown-item
             >
             <el-dropdown-item icon="el-icon-s-data" command="数据迁移"
@@ -73,6 +79,31 @@ export default {
      */
     handleCommand(command) {
       switch (command) {
+        /* 设置运动角度范围 */
+        case '设置运动角度范围':
+          if (this.$store.state.currentUserInfo.userId) {
+            this.$router.push({
+              path: '/set-angularRange'
+            })
+          } else {
+            this.$confirm(
+              `检测到您还没有选择用户，请先到用户页面进行选择！`,
+              '提示',
+              {
+                type: 'warning',
+                center: true,
+                showCancelButton: false,
+                confirmButtonText: '确 定'
+              }
+            )
+              .then(() => {
+                this.$router.push({
+                  path: '/user'
+                })
+              })
+              .catch(() => {})
+          }
+          break
         /* 开发者 */
         case '开发者':
           this.$prompt('请输入密码', '提示', {
