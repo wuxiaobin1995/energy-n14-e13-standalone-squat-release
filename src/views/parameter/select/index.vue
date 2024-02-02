@@ -1,16 +1,16 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2024-01-31 18:01:15
- * @LastEditTime: 2024-02-01 15:15:01
- * @Description : 测试项目选择
+ * @LastEditTime: 2024-02-01 15:14:45
+ * @Description : 配置项目选择
 -->
 <template>
-  <div class="test-select">
+  <div class="parameter-select">
     <div class="wrapper">
       <el-page-header
         class="page"
         title="返回首页"
-        content="请选择测试项目-1RM测试"
+        content="请选择配置项目"
         @back="handleToHome"
       ></el-page-header>
 
@@ -21,9 +21,9 @@
             class="img"
             :src="img1"
             fit="scale-down"
-            @click.native="handleFast"
+            @click.native="handleAction"
           ></el-image>
-          <div class="text">快速测试</div>
+          <div class="text">训练动作配置</div>
         </div>
 
         <div class="select-item">
@@ -31,9 +31,9 @@
             class="img"
             :src="img2"
             fit="scale-down"
-            @click.native="handlePrecise"
+            @click.native="handleCurrent"
           ></el-image>
-          <div class="text">精准测试</div>
+          <div class="text">通用配置</div>
         </div>
       </div>
     </div>
@@ -42,31 +42,31 @@
 
 <script>
 export default {
-  name: 'test-select',
+  name: 'parameter-select',
 
   data() {
     return {
-      img1: require('@/assets/img/Test/Select/快速测试.png'),
-      img2: require('@/assets/img/Test/Select/精准测试.png')
+      img1: require('@/assets/img/Parameter/Select/训练动作配置.png'),
+      img2: require('@/assets/img/Parameter/Select/通用配置.png')
     }
   },
 
   methods: {
     /**
-     * @description: 前往快速测试
+     * @description: 前往训练动作配置
      */
-    handleFast() {
+    handleAction() {
       this.$router.push({
-        path: '/test-fast-measure'
+        path: '/parameter-action'
       })
     },
 
     /**
-     * @description: 前往精准测试
+     * @description: 前往通用配置
      */
-    handlePrecise() {
+    handleCurrent() {
       this.$router.push({
-        path: '/test-precise-measure'
+        path: '/parameter-current'
       })
     },
 
@@ -83,7 +83,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.test-select {
+.parameter-select {
   width: 100%;
   height: 100%;
   @include flex(row, center, center);

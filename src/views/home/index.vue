@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2022-07-28 11:18:12
- * @LastEditTime: 2024-01-31 17:50:52
+ * @LastEditTime: 2024-02-01 18:03:25
  * @Description : home
 -->
 <template>
@@ -161,7 +161,7 @@ export default {
       // 参数配置
       else if (src === 'src2') {
         this.$router.push({
-          path: '/set'
+          path: '/parameter-select'
         })
       }
       // 运动测试
@@ -192,9 +192,28 @@ export default {
       // 运动训练
       else if (src === 'src4') {
         if (this.$store.state.currentUserInfo.userId) {
-          this.$router.push({
-            path: '/train-select'
-          })
+          if (this.$store.state.currentUserInfo.angularRange) {
+            this.$router.push({
+              path: '/train-select'
+            })
+          } else {
+            this.$confirm(
+              `检测到您还没有"设置运动角度范围"，请先去进行测量！`,
+              '提示',
+              {
+                type: 'warning',
+                center: true,
+                showCancelButton: false,
+                confirmButtonText: '确 定'
+              }
+            )
+              .then(() => {
+                this.$router.push({
+                  path: '/set-angularRange'
+                })
+              })
+              .catch(() => {})
+          }
         } else {
           this.$confirm(
             `检测到您还没有选择用户，请先到用户页面进行选择！`,

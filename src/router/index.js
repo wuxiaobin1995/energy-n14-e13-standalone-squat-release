@@ -1,7 +1,7 @@
 /*
  * @Author      : Mr.bin
  * @Date        : 2023-11-21 09:11:54
- * @LastEditTime: 2024-01-31 18:00:02
+ * @LastEditTime: 2024-02-02 17:38:37
  * @Description : 路由
  */
 import Vue from 'vue'
@@ -85,32 +85,60 @@ const routes = [
         meta: ['数据迁移']
       },
 
+      /* 参数配置 */
+      // 配置项目选择
+      {
+        path: 'parameter-select',
+        name: 'parameter-select',
+        component: () => import('@/views/parameter/select'),
+        meta: ['配置项目选择']
+      },
+      // 训练动作-配置
+      {
+        path: 'parameter-action',
+        name: 'parameter-action',
+        component: () => import('@/views/parameter/action'),
+        meta: ['训练动作-配置']
+      },
+      // 通用-配置
+      {
+        path: 'parameter-current',
+        name: 'parameter-current',
+        component: () => import('@/views/parameter/current'),
+        meta: ['通用-配置']
+      },
+
       /* 测试模块 */
       // 测试项目选择
       {
         path: 'test-select',
         name: 'test-select',
         component: () => import('@/views/test-mode/select'),
-        meta: ['测试项目选择'],
-        redirect: '/test-select/fast',
-        children: [
-          // 快速测试
-          {
-            path: 'fast',
-            name: 'fast',
-            component: () => import('@/views/test-mode/select/fast'),
-            meta: ['快速测试']
-          },
-          // 精准测试
-          {
-            path: 'precise',
-            name: 'precise',
-            component: () => import('@/views/test-mode/select/precise'),
-            meta: ['精准测试']
-          }
-        ]
+        meta: ['测试项目选择']
+      },
+      // 快速测试-具体测量
+      {
+        path: 'test-fast-measure',
+        name: 'test-fast-measure',
+        component: () => import('@/views/test-mode/fast/measure'),
+        meta: ['快速测试-具体测量']
+      },
+      // 精准测试-具体测量
+      {
+        path: 'test-precise-measure',
+        name: 'test-precise-measure',
+        component: () => import('@/views/test-mode/precise/measure'),
+        meta: ['精准测试-具体测量']
       }
     ]
+  },
+
+  /* 测试报告 */
+  {
+    path: '/test-oneRM-secular-trend-pdf',
+    name: 'test-oneRM-secular-trend-pdf',
+    component: () => import('@/views/test-mode/pdf'),
+    meta: ['1RM极限力量-长期趋势报告']
   },
 
   {
