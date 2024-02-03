@@ -134,6 +134,7 @@ const routes = [
   },
 
   /* 测试报告 */
+  // 1RM极限力量-长期趋势报告
   {
     path: '/test-oneRM-secular-trend-pdf',
     name: 'test-oneRM-secular-trend-pdf',

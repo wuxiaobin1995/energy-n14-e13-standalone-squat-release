@@ -228,7 +228,7 @@ export default {
     },
 
     /**
-     * @description: 长期趋势报告
+     * @description: 1RM极限力量-长期趋势报告
      */
     handlePDF() {
       this.$router.push({

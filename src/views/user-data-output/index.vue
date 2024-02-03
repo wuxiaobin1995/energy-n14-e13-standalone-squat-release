@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2024-01-31 16:44:51
- * @LastEditTime: 2024-01-31 16:49:34
+ * @LastEditTime: 2024-02-03 08:58:31
  * @Description : 导出所选用户的数据（测试、训练、......）
 -->
 <template>
@@ -201,6 +201,7 @@ export default {
                 height: '身高(cm)',
                 weight: '体重(kg)',
                 birthday: '出生日期',
+                oneRM: '1RM极限力量(kg)',
                 pdfTime: '测量时间'
               }
               const tHeader = Object.values(excelTitle)

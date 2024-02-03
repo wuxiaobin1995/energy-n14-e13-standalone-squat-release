@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2024-02-02 16:48:50
- * @LastEditTime: 2024-02-02 17:57:20
+ * @LastEditTime: 2024-02-03 09:56:33
  * @Description : 1RM极限力量-长期趋势报告
 -->
 <template>
@@ -16,12 +16,16 @@
 
         <div class="title">1RM极限力量-长期趋势报告</div>
 
+        <div class="id">用户id：{{ userId }}</div>
+
         <div class="divider"></div>
 
         <div class="info">
           <div class="item">姓名：{{ userName }}</div>
           <div class="item">性别：{{ sex }}</div>
           <div class="item">出生日期：{{ birthday }}</div>
+          <div class="item">身高：{{ height }}cm</div>
+          <div class="item">体重：{{ weight }}kg</div>
         </div>
 
         <div class="divider"></div>
@@ -68,6 +72,8 @@ export default {
       userId: this.$store.state.currentUserInfo.userId,
       userName: this.$store.state.currentUserInfo.userName,
       sex: this.$store.state.currentUserInfo.sex,
+      weight: this.$store.state.currentUserInfo.weight,
+      height: this.$store.state.currentUserInfo.height,
       birthday: this.$store.state.currentUserInfo.birthday,
 
       oneRMArray: [] // 1RM数组
@@ -136,21 +142,21 @@ export default {
       this.option = {
         xAxis: {
           type: 'category',
-          name: '单位：日期',
+          name: '测量日期',
           data: this.xData,
           boundaryGap: true // 从0点开始
         },
         yAxis: {
           type: 'value',
-          name: '单位：kg',
-          splitLine: {
-            show: false // 隐藏背景网格线
-          }
+          name: '1RM极限力量值（kg）'
+          // splitLine: {
+          //   show: false // 隐藏背景网格线
+          // }
         },
         tooltip: {
           trigger: 'axis',
           axisPointer: {
-            type: 'cross',
+            type: 'line',
             label: {
               backgroundColor: '#6a7985'
             }
@@ -160,11 +166,18 @@ export default {
           {
             type: 'line',
             name: '1RM极限力量',
-            color: 'red',
+            color: '#2BB983',
             label: {
               show: true,
-              position: 'top'
+              position: 'top',
+              color: 'rgba(255, 0, 0, 1)',
+              fontWeight: 'bold',
+              fontSize: 16
             },
+            lineStyle: {
+              width: 3
+            },
+            symbolSize: 8,
             smooth: true,
             data: this.oneRMArray
           }
@@ -219,6 +232,13 @@ export default {
         top: 10px;
         left: 5px;
         width: 180px;
+      }
+      .id {
+        position: absolute;
+        top: 50px;
+        right: 5px;
+        font-size: 18px;
+        font-weight: 700;
       }
       .title {
         font-size: 50px;
