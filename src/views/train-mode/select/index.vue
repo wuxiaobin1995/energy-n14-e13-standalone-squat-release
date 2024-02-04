@@ -1,16 +1,16 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2024-01-31 18:01:15
- * @LastEditTime: 2024-02-04 10:57:27
- * @Description : 测试项目选择
+ * @LastEditTime: 2024-02-04 14:57:26
+ * @Description : 训练项目选择
 -->
 <template>
-  <div class="test-select">
+  <div class="train-select">
     <div class="wrapper">
       <el-page-header
         class="page"
         title="返回首页"
-        content="请选择测试项目-1RM极限力量测试"
+        content="请选择训练项目"
         @back="handleToHome"
       ></el-page-header>
 
@@ -21,9 +21,9 @@
             class="img"
             :src="img1"
             fit="scale-down"
-            @click.native="handleFast"
+            @click.native="handleEndurance"
           ></el-image>
-          <div class="text">快速测试</div>
+          <div class="text">肌耐力训练</div>
         </div>
 
         <div class="select-item">
@@ -31,9 +31,19 @@
             class="img"
             :src="img2"
             fit="scale-down"
-            @click.native="handlePrecise"
+            @click.native="handleHypertrophy"
           ></el-image>
-          <div class="text">精准测试</div>
+          <div class="text">肌肥大训练</div>
+        </div>
+
+        <div class="select-item">
+          <el-image
+            class="img"
+            :src="img3"
+            fit="scale-down"
+            @click.native="handleNeuromuscular"
+          ></el-image>
+          <div class="text">神经肌肉募集训练</div>
         </div>
       </div>
     </div>
@@ -42,31 +52,41 @@
 
 <script>
 export default {
-  name: 'test-select',
+  name: 'train-select',
 
   data() {
     return {
-      img1: require('@/assets/img/Test/Select/快速测试.png'),
-      img2: require('@/assets/img/Test/Select/精准测试.png')
+      img1: require('@/assets/img/Train/Select/肌耐力训练.png'),
+      img2: require('@/assets/img/Train/Select/肌肥大训练.png'),
+      img3: require('@/assets/img/Train/Select/神经肌肉募集训练.png')
     }
   },
 
   methods: {
     /**
-     * @description: 快速测试
+     * @description: 肌耐力训练
      */
-    handleFast() {
+    handleEndurance() {
       this.$router.push({
-        path: '/test-fast-measure'
+        path: '/train-endurance-desc'
       })
     },
 
     /**
-     * @description: 精准测试
+     * @description: 肌肥大训练
      */
-    handlePrecise() {
+    handleHypertrophy() {
       this.$router.push({
-        path: '/test-precise-measure'
+        path: '/train-hypertrophy-desc'
+      })
+    },
+
+    /**
+     * @description: 神经肌肉募集训练
+     */
+    handleNeuromuscular() {
+      this.$router.push({
+        path: '/train-neuromuscular-desc'
       })
     },
 
@@ -83,7 +103,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.test-select {
+.train-select {
   width: 100%;
   height: 100%;
   @include flex(row, center, center);

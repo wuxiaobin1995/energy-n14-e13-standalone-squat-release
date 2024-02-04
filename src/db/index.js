@@ -1,7 +1,7 @@
 /*
  * @Author      : Mr.bin
  * @Date        : 2022-07-28 10:28:30
- * @LastEditTime: 2024-01-29 09:43:45
+ * @LastEditTime: 2024-02-04 10:00:26
  * @Description : Dexie
  */
 import Dexie from 'dexie'
@@ -11,9 +11,9 @@ export function initDB() {
   db.version(1).stores({
     user: 'userId,userName',
     test_data:
-      '++,userId,pdfTime,[userId+pdfTime]',
+      '++,userId,type,pdfTime,[userId+pdfTime],[userId+type],[userId+type+pdfTime]',
     train_data:
-      '++,userId,pdfTime,action,[userId+pdfTime],[userId+action],[userId+action+pdfTime]'
+      '++,userId,type,pdfTime,action,[userId+pdfTime],[userId+type],[userId+action],[userId+type+pdfTime],[userId+action+pdfTime]'
   })
   return db
 }

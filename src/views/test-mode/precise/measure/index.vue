@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2024-02-01 11:34:57
- * @LastEditTime: 2024-02-03 12:02:19
+ * @LastEditTime: 2024-02-04 10:01:46
  * @Description : 精准测试-具体测量
 -->
 <template>
@@ -71,7 +71,7 @@
 
       <!-- 按钮组 -->
       <div class="btn">
-        <el-button class="item" type="primary" @click="handleConfirm"
+        <el-button class="item" type="success" @click="handleConfirm"
           >确 认</el-button
         >
         <el-button class="item" type="danger" @click="handleRefresh"
@@ -122,7 +122,7 @@ export default {
       frontWeight: 0, // 前端配重（kg）
 
       centerDialogVisible: false,
-      oneRM: 0, // 1RM值（kg）
+      oneRM: 0, // 1RM极限力量值（kg）
       pdfTime: ''
     }
   },
@@ -138,9 +138,9 @@ export default {
     },
 
     /**
-     * @description: 1RM值kg
+     * @description: 1RM极限力量值kg
      */
-    countWeight() {
+    countOneRM() {
       const L1 = 0.35
       const L2 = 1.05
       const L3 = 0.8
@@ -164,7 +164,7 @@ export default {
      */
     handleConfirm() {
       /* 计算结果 */
-      this.countWeight()
+      this.countOneRM()
 
       /* 保存数据库 */
       this.pdfTime = this.$moment().format('YYYY-MM-DD HH:mm:ss')
@@ -178,7 +178,8 @@ export default {
           weight: this.$store.state.currentUserInfo.weight,
           birthday: this.$store.state.currentUserInfo.birthday,
           pdfTime: this.pdfTime,
-          oneRM: this.oneRM
+          oneRM: this.oneRM,
+          type: '精准测试'
         })
         .then(() => {
           this.centerDialogVisible = true
@@ -245,10 +246,16 @@ export default {
 
     .main {
       flex: 1;
-      @include flex(row, space-around, center);
+      @include flex(row, center, center);
       .left {
         .steps {
           height: 500px;
+          & /deep/ .el-step__title {
+            font-size: 24px;
+          }
+          & /deep/ .el-step__description {
+            font-size: 18px;
+          }
         }
       }
       .right {

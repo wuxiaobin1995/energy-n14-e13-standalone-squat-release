@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2024-02-01 11:34:57
- * @LastEditTime: 2024-02-01 16:58:15
+ * @LastEditTime: 2024-02-04 10:23:16
  * @Description : 训练动作-配置
 -->
 <template>
@@ -135,6 +135,12 @@ export default {
 
         this.actionName = ''
         this.loading = false
+
+        this.$message({
+          message: '添加成功',
+          type: 'success',
+          duration: 1500
+        })
       }
     },
 
@@ -160,6 +166,12 @@ export default {
           )
 
           this.loading = false
+
+          this.$message({
+            message: '删除成功',
+            type: 'success',
+            duration: 1500
+          })
         })
         .catch(() => {})
     },

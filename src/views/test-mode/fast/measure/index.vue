@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2024-02-01 11:34:57
- * @LastEditTime: 2024-02-02 17:17:22
+ * @LastEditTime: 2024-02-04 10:34:54
  * @Description : 快速测试-具体测量
 -->
 <template>
@@ -75,7 +75,7 @@
 
       <!-- 按钮组 -->
       <div class="btn">
-        <el-button class="item" type="primary" @click="handleConfirm"
+        <el-button class="item" type="success" @click="handleConfirm"
           >确 认</el-button
         >
         <el-button class="item" type="danger" @click="handleRefresh"
@@ -128,7 +128,7 @@ export default {
       num: 1, // 次数
 
       centerDialogVisible: false,
-      oneRM: 0, // 1RM值（kg）
+      oneRM: 0, // 1RM极限力量值（kg）
       pdfTime: ''
     }
   },
@@ -209,7 +209,8 @@ export default {
           weight: this.$store.state.currentUserInfo.weight,
           birthday: this.$store.state.currentUserInfo.birthday,
           pdfTime: this.pdfTime,
-          oneRM: this.oneRM
+          oneRM: this.oneRM,
+          type: '快速测试'
         })
         .then(() => {
           this.centerDialogVisible = true

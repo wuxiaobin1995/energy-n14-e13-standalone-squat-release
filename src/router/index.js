@@ -1,7 +1,7 @@
 /*
  * @Author      : Mr.bin
  * @Date        : 2023-11-21 09:11:54
- * @LastEditTime: 2024-02-02 17:38:37
+ * @LastEditTime: 2024-02-04 10:53:14
  * @Description : 路由
  */
 import Vue from 'vue'
@@ -129,6 +129,30 @@ const routes = [
         name: 'test-precise-measure',
         component: () => import('@/views/test-mode/precise/measure'),
         meta: ['精准测试-具体测量']
+      },
+
+      /* 训练模块 */
+      // 训练项目选择
+      {
+        path: 'train-select',
+        name: 'train-select',
+        component: () => import('@/views/train-mode/select'),
+        meta: ['训练项目选择']
+      },
+      // 肌耐力训练-介绍与参数设置
+      {
+        path: 'train-endurance-desc',
+        name: 'train-endurance-desc',
+        component: () => import('@/views/train-mode/endurance/desc'),
+        meta: ['肌耐力训练-介绍与参数设置']
+      },
+
+      /* 数据记录 */
+      // 测试
+      {
+        path: 'test-record',
+        name: 'test-record',
+        component: () => import('@/views/record/test')
       }
     ]
   },
