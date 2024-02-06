@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2024-01-31 18:01:15
- * @LastEditTime: 2024-02-04 10:57:27
+ * @LastEditTime: 2024-02-06 09:37:34
  * @Description : 测试项目选择
 -->
 <template>
@@ -10,7 +10,7 @@
       <el-page-header
         class="page"
         title="返回首页"
-        content="请选择测试项目-1RM极限力量测试"
+        content="请选择测试项目"
         @back="handleToHome"
       ></el-page-header>
 
@@ -23,7 +23,7 @@
             fit="scale-down"
             @click.native="handleFast"
           ></el-image>
-          <div class="text">快速测试</div>
+          <div class="text">1RM快速测试</div>
         </div>
 
         <div class="select-item">
@@ -33,7 +33,17 @@
             fit="scale-down"
             @click.native="handlePrecise"
           ></el-image>
-          <div class="text">精准测试</div>
+          <div class="text">1RM精准测试</div>
+        </div>
+
+        <div class="select-item">
+          <el-image
+            class="img"
+            :src="img3"
+            fit="scale-down"
+            @click.native="handleExplosiveness"
+          ></el-image>
+          <div class="text">爆发力测试</div>
         </div>
       </div>
     </div>
@@ -46,8 +56,9 @@ export default {
 
   data() {
     return {
-      img1: require('@/assets/img/Test/Select/快速测试.png'),
-      img2: require('@/assets/img/Test/Select/精准测试.png')
+      img1: require('@/assets/img/Test/Select/1RM快速测试.png'),
+      img2: require('@/assets/img/Test/Select/1RM精准测试.png'),
+      img3: require('@/assets/img/Test/Select/爆发力测试.png')
     }
   },
 
@@ -67,6 +78,15 @@ export default {
     handlePrecise() {
       this.$router.push({
         path: '/test-precise-measure'
+      })
+    },
+
+    /**
+     * @description: 爆发力测试
+     */
+    handleExplosiveness() {
+      this.$router.push({
+        path: '/test-explosiveness-measure'
       })
     },
 

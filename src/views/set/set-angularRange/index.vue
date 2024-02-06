@@ -34,14 +34,14 @@
         <el-button
           class="item"
           type="primary"
-          :disabled="!startAllow"
+          :disabled="!isStart"
           @click="handleStart"
           >开 始</el-button
         >
         <el-button
           class="item"
           type="danger"
-          :disabled="startAllow"
+          :disabled="isStart"
           @click="handleFinish"
           >结 束 完 成</el-button
         >
@@ -83,7 +83,7 @@ export default {
           : path.join(__static, 'dll/controller.dll'),
 
       /* 其他 */
-      startAllow: true, // 开始按钮的禁用与否
+      isStart: true, // 是否开始
       angle: 0, // 实时角度
       angularRangeArray: [], // 完整的角度范围数组
       angularRange: '' // 运动角度范围结果
@@ -210,7 +210,7 @@ export default {
      * @description: 开始按钮
      */
     handleStart() {
-      this.startAllow = false
+      this.isStart = false
       this.angularRangeArray = []
       this.angularRange = ''
 
@@ -249,7 +249,7 @@ export default {
      * @description: 结束完成，并保存数据
      */
     handleFinish() {
-      this.startAllow = true
+      this.isStart = true
       if (this.setTimer) {
         window.clearInterval(this.setTimer)
       }

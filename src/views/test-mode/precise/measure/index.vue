@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2024-02-01 11:34:57
- * @LastEditTime: 2024-02-04 10:01:46
+ * @LastEditTime: 2024-02-06 15:32:01
  * @Description : 精准测试-具体测量
 -->
 <template>
@@ -179,7 +179,7 @@ export default {
           birthday: this.$store.state.currentUserInfo.birthday,
           pdfTime: this.pdfTime,
           oneRM: this.oneRM,
-          type: '精准测试'
+          type: '1RM测试'
         })
         .then(() => {
           this.centerDialogVisible = true

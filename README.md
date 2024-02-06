@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2023-11-21 09:12:16
- * @LastEditTime: 2023-11-21 15:27:52
+ * @LastEditTime: 2024-02-06 09:44:50
  * @Description : energy-n14-e13-standalone-squat-release
 -->
 
@@ -13,3 +13,5 @@
 - 165kg 接近配平
 
 - y 轴对着人
+
+- 用功率代表爆发力指标

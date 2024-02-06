@@ -1,7 +1,7 @@
 /*
  * @Author      : Mr.bin
  * @Date        : 2023-11-21 09:11:54
- * @LastEditTime: 2024-02-04 10:53:14
+ * @LastEditTime: 2024-02-06 17:09:43
  * @Description : 路由
  */
 import Vue from 'vue'
@@ -130,6 +130,13 @@ const routes = [
         component: () => import('@/views/test-mode/precise/measure'),
         meta: ['精准测试-具体测量']
       },
+      // 爆发力测试-具体测量
+      {
+        path: 'test-explosiveness-measure',
+        name: 'test-explosiveness-measure',
+        component: () => import('@/views/test-mode/explosiveness/measure'),
+        meta: ['爆发力测试-具体测量']
+      },
 
       /* 训练模块 */
       // 训练项目选择
@@ -152,18 +159,43 @@ const routes = [
       {
         path: 'test-record',
         name: 'test-record',
-        component: () => import('@/views/record/test')
+        component: () => import('@/views/record/test'),
+        meta: ['测试-数据记录'],
+        redirect: '/test-record/oneRM',
+        children: [
+          // 1RM测试
+          {
+            path: 'oneRM',
+            name: 'oneRM',
+            component: () => import('@/views/record/test/oneRM'),
+            meta: ['1RM测试']
+          },
+          // 爆发力测试
+          {
+            path: 'explosiveness',
+            name: 'explosiveness',
+            component: () => import('@/views/record/test/explosiveness'),
+            meta: ['爆发力测试']
+          }
+        ]
       }
     ]
   },
 
   /* 测试报告 */
-  // 1RM极限力量-长期趋势报告
+  // 1RM极限力量测试-长期趋势报告
   {
     path: '/test-oneRM-secular-trend-pdf',
     name: 'test-oneRM-secular-trend-pdf',
-    component: () => import('@/views/test-mode/pdf'),
-    meta: ['1RM极限力量-长期趋势报告']
+    component: () => import('@/views/test-mode/oneRM-pdf'),
+    meta: ['1RM极限力量测试-长期趋势报告']
+  },
+  // 爆发力测试-长期趋势报告
+  {
+    path: '/test-explosiveness-secular-trend-pdf',
+    name: 'test-explosiveness-secular-trend-pdf',
+    component: () => import('@/views/test-mode/explosiveness-pdf'),
+    meta: ['爆发力测试-长期趋势报告']
   },
 
   {

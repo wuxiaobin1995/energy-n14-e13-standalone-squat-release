@@ -1,12 +1,12 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2024-02-02 16:48:50
- * @LastEditTime: 2024-02-03 09:56:33
- * @Description : 1RM极限力量-长期趋势报告
+ * @LastEditTime: 2024-02-06 15:51:00
+ * @Description : 爆发力测试-长期趋势报告
 -->
 <template>
   <div
-    class="test-oneRM-secular-trend-pdf"
+    class="test-explosiveness-secular-trend-pdf"
     v-loading.fullscreen.lock="fullscreenLoading"
   >
     <!-- PDF区域 -->
@@ -14,7 +14,7 @@
       <div class="top">
         <el-image class="logo" :src="logoSrc" fit="scale-down"></el-image>
 
-        <div class="title">1RM极限力量-长期趋势报告</div>
+        <div class="title">爆发力测试-长期趋势报告</div>
 
         <div class="id">用户id：{{ userId }}</div>
 
@@ -53,7 +53,7 @@
 import { initDB } from '@/db/index.js'
 
 export default {
-  name: 'test-oneRM-secular-trend-pdf',
+  name: 'test-explosiveness-secular-trend-pdf',
 
   data() {
     return {
@@ -76,7 +76,7 @@ export default {
       height: this.$store.state.currentUserInfo.height,
       birthday: this.$store.state.currentUserInfo.birthday,
 
-      oneRMArray: [] // 1RM数组
+      explosivenessArray: [] // 爆发力数组
     }
   },
 
@@ -86,21 +86,22 @@ export default {
 
   methods: {
     /**
-     * @description: 根据userId查询数据
+     * @description: 根据[userId、type]查询数据
      */
     getData() {
       this.fullscreenLoading = true
       const db = initDB()
       db.test_data
         .where({
-          userId: this.userId
+          userId: this.userId,
+          type: '爆发力测试'
         })
         .toArray()
         .then(res => {
           for (let i = 0; i < res.length; i++) {
             const element = res[i]
 
-            this.oneRMArray.push(element.oneRM)
+            this.explosivenessArray.push(element.explosivenessVal)
             this.xData.push(element.pdfTime)
           }
         })
@@ -148,7 +149,7 @@ export default {
         },
         yAxis: {
           type: 'value',
-          name: '1RM极限力量值（kg）'
+          name: '爆发力指标（功率W）'
           // splitLine: {
           //   show: false // 隐藏背景网格线
           // }
@@ -165,7 +166,7 @@ export default {
         series: [
           {
             type: 'line',
-            name: '1RM极限力量',
+            name: '爆发力',
             color: '#2BB983',
             label: {
               show: true,
@@ -179,7 +180,7 @@ export default {
             },
             symbolSize: 8,
             smooth: true,
-            data: this.oneRMArray
+            data: this.explosivenessArray
           }
         ],
         animation: false
@@ -193,7 +194,7 @@ export default {
     handlePdf() {
       this.$htmlToPdf(
         'pdf',
-        `1RM极限力量-长期趋势报告-${this.userName} ${this.$moment().format(
+        `爆发力测试-长期趋势报告-${this.userName} ${this.$moment().format(
           'YYYY-MM-DD HH_mm_ss'
         )}`,
         500
@@ -213,7 +214,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.test-oneRM-secular-trend-pdf {
+.test-explosiveness-secular-trend-pdf {
   width: 100vw;
   height: 100vh;
   padding: 10px;

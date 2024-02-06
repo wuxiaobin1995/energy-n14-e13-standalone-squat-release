@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2024-01-31 16:44:51
- * @LastEditTime: 2024-02-03 08:58:31
+ * @LastEditTime: 2024-02-06 17:18:13
  * @Description : 导出所选用户的数据（测试、训练、......）
 -->
 <template>
@@ -202,6 +202,9 @@ export default {
                 weight: '体重(kg)',
                 birthday: '出生日期',
                 oneRM: '1RM极限力量(kg)',
+                maxAngularVelocity: '峰值角速度(rad/s)',
+                explosivenessVal: '爆发力(W)',
+                type: '类型',
                 pdfTime: '测量时间'
               }
               const tHeader = Object.values(excelTitle)
@@ -297,6 +300,7 @@ export default {
                 height: '身高(cm)',
                 weight: '体重(kg)',
                 birthday: '出生日期',
+                type: '类型',
                 pdfTime: '测量时间'
               }
               const tHeader = Object.values(excelTitle)
