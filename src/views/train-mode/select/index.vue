@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2024-01-31 18:01:15
- * @LastEditTime: 2024-02-04 14:57:26
+ * @LastEditTime: 2024-03-19 16:19:49
  * @Description : 训练项目选择
 -->
 <template>
@@ -45,6 +45,16 @@
           ></el-image>
           <div class="text">神经肌肉募集训练</div>
         </div>
+
+        <div class="select-item">
+          <el-image
+            class="img"
+            :src="img4"
+            fit="scale-down"
+            @click.native="handleExplosiveness"
+          ></el-image>
+          <div class="text">爆发力训练</div>
+        </div>
       </div>
     </div>
   </div>
@@ -58,7 +68,8 @@ export default {
     return {
       img1: require('@/assets/img/Train/Select/肌耐力训练.png'),
       img2: require('@/assets/img/Train/Select/肌肥大训练.png'),
-      img3: require('@/assets/img/Train/Select/神经肌肉募集训练.png')
+      img3: require('@/assets/img/Train/Select/神经肌肉募集训练.png'),
+      img4: require('@/assets/img/Train/Select/爆发力训练.png')
     }
   },
 
@@ -87,6 +98,15 @@ export default {
     handleNeuromuscular() {
       this.$router.push({
         path: '/train-neuromuscular-desc'
+      })
+    },
+
+    /**
+     * @description: 爆发力训练
+     */
+    handleExplosiveness() {
+      this.$router.push({
+        path: '/train-explosiveness-desc'
       })
     },
 

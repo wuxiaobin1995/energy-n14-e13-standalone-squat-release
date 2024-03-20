@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2024-02-06 10:15:49
- * @LastEditTime: 2024-02-06 17:28:26
+ * @LastEditTime: 2024-03-19 16:08:14
  * @Description : 爆发力测试-具体测量
 -->
 <template>
@@ -14,6 +14,19 @@
           content="爆发力测试"
           @back="handleBack"
         ></el-page-header>
+      </div>
+
+      <!-- 文字说明 -->
+      <div class="text">
+        <div class="item">
+          说明：该模式下，用于测量爆发力指标，请用户先设定好后端配重、前端配重（程序会自动算出实际配重）；
+        </div>
+        <div class="item">
+          开始测试，点击“开 始”按钮，用户做好准备动作，然后瞬间发力蹲起一次；
+        </div>
+        <div class="item">
+          结束测试，点击“结 束”按钮，系统弹窗算出爆发力指标。
+        </div>
       </div>
 
       <!-- 主内容 -->
@@ -330,8 +343,8 @@ export default {
 
           this.angularVelocityArray.push(this.angularVelocity)
 
-          /* 安全设置，默认120s自动结束 */
-          if (this.angularVelocityArray.length === 1200) {
+          /* 安全设置，默认30s自动结束 */
+          if (this.angularVelocityArray.length === 300) {
             this.handleFinish()
           }
         }, 100)
@@ -376,6 +389,7 @@ export default {
           height: this.$store.state.currentUserInfo.height,
           weight: this.$store.state.currentUserInfo.weight,
           birthday: this.$store.state.currentUserInfo.birthday,
+
           pdfTime: this.pdfTime,
           maxAngularVelocity: this.maxAngularVelocity,
           explosivenessVal: this.explosivenessVal,
@@ -417,7 +431,7 @@ export default {
         path: '/refresh',
         query: {
           routerName: JSON.stringify('/test-explosiveness-measure'),
-          duration: JSON.stringify(300)
+          duration: JSON.stringify(800)
         }
       })
     }
@@ -444,8 +458,19 @@ export default {
       margin-bottom: 20px;
     }
 
+    .text {
+      .item {
+        font-size: 22px;
+        margin-bottom: 8px;
+      }
+    }
+
     .main {
       flex: 1;
+      .item {
+        margin-top: 20px;
+        font-size: 20px;
+      }
     }
 
     .dialog-main {

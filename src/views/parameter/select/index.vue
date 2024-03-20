@@ -16,7 +16,7 @@
 
       <!-- 项目 -->
       <div class="select">
-        <div class="select-item">
+        <!-- <div class="select-item">
           <el-image
             class="img"
             :src="img1"
@@ -24,7 +24,7 @@
             @click.native="handleAction"
           ></el-image>
           <div class="text">训练动作配置</div>
-        </div>
+        </div> -->
 
         <div class="select-item">
           <el-image

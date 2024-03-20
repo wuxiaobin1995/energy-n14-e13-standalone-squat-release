@@ -1,7 +1,7 @@
 /*
  * @Author      : Mr.bin
  * @Date        : 2023-11-21 09:11:54
- * @LastEditTime: 2024-02-06 17:09:43
+ * @LastEditTime: 2024-03-19 16:20:57
  * @Description : 路由
  */
 import Vue from 'vue'
@@ -153,6 +153,34 @@ const routes = [
         component: () => import('@/views/train-mode/endurance/desc'),
         meta: ['肌耐力训练-介绍与参数设置']
       },
+      // 肌耐力训练-具体测量
+      {
+        path: 'train-endurance-measure',
+        name: 'train-endurance-measure',
+        component: () => import('@/views/train-mode/endurance/measure'),
+        meta: ['肌耐力训练-具体测量']
+      },
+      // // 肌肥大训练-介绍与参数设置
+      // {
+      //   path: 'train-hypertrophy-desc',
+      //   name: 'train-hypertrophy-desc',
+      //   component: () => import('@/views/train-mode/hypertrophy/desc'),
+      //   meta: ['肌肥大训练-介绍与参数设置']
+      // },
+      // // 神经肌肉募集训练-介绍与参数设置
+      // {
+      //   path: 'train-neuromuscular-desc',
+      //   name: 'train-neuromuscular-desc',
+      //   component: () => import('@/views/train-mode/neuromuscular/desc'),
+      //   meta: ['神经肌肉募集训练-介绍与参数设置']
+      // },
+      // // 爆发力训练-介绍与参数设置
+      // {
+      //   path: 'train-explosiveness-desc',
+      //   name: 'train-explosiveness-desc',
+      //   component: () => import('@/views/train-mode/explosiveness/desc'),
+      //   meta: ['爆发力训练-介绍与参数设置']
+      // },
 
       /* 数据记录 */
       // 测试
@@ -179,6 +207,7 @@ const routes = [
           }
         ]
       }
+      // 训练
     ]
   },
 
