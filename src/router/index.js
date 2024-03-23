@@ -1,7 +1,7 @@
 /*
  * @Author      : Mr.bin
  * @Date        : 2023-11-21 09:11:54
- * @LastEditTime: 2024-03-19 16:20:57
+ * @LastEditTime: 2024-03-22 15:50:12
  * @Description : 路由
  */
 import Vue from 'vue'
@@ -160,20 +160,34 @@ const routes = [
         component: () => import('@/views/train-mode/endurance/measure'),
         meta: ['肌耐力训练-具体测量']
       },
-      // // 肌肥大训练-介绍与参数设置
-      // {
-      //   path: 'train-hypertrophy-desc',
-      //   name: 'train-hypertrophy-desc',
-      //   component: () => import('@/views/train-mode/hypertrophy/desc'),
-      //   meta: ['肌肥大训练-介绍与参数设置']
-      // },
-      // // 神经肌肉募集训练-介绍与参数设置
-      // {
-      //   path: 'train-neuromuscular-desc',
-      //   name: 'train-neuromuscular-desc',
-      //   component: () => import('@/views/train-mode/neuromuscular/desc'),
-      //   meta: ['神经肌肉募集训练-介绍与参数设置']
-      // },
+      // 肌肥大训练-介绍与参数设置
+      {
+        path: 'train-hypertrophy-desc',
+        name: 'train-hypertrophy-desc',
+        component: () => import('@/views/train-mode/hypertrophy/desc'),
+        meta: ['肌肥大训练-介绍与参数设置']
+      },
+      // 肌肥大训练-具体测量
+      {
+        path: 'train-hypertrophy-measure',
+        name: 'train-hypertrophy-measure',
+        component: () => import('@/views/train-mode/hypertrophy/measure'),
+        meta: ['肌肥大训练-具体测量']
+      },
+      // 神经肌肉募集训练-介绍与参数设置
+      {
+        path: 'train-neuromuscular-desc',
+        name: 'train-neuromuscular-desc',
+        component: () => import('@/views/train-mode/neuromuscular/desc'),
+        meta: ['神经肌肉募集训练-介绍与参数设置']
+      },
+      // 神经肌肉募集训练-具体测量
+      {
+        path: 'train-neuromuscular-measure',
+        name: 'train-neuromuscular-measure',
+        component: () => import('@/views/train-mode/neuromuscular/measure'),
+        meta: ['神经肌肉募集训练-具体测量']
+      },
       // // 爆发力训练-介绍与参数设置
       // {
       //   path: 'train-explosiveness-desc',
@@ -201,13 +215,50 @@ const routes = [
           // 爆发力测试
           {
             path: 'explosiveness',
-            name: 'explosiveness',
+            name: 'test-explosiveness',
             component: () => import('@/views/record/test/explosiveness'),
             meta: ['爆发力测试']
           }
         ]
-      }
+      },
       // 训练
+      {
+        path: 'train-record',
+        name: 'train-record',
+        component: () => import('@/views/record/train'),
+        meta: ['训练-数据记录'],
+        redirect: '/train-record/endurance',
+        children: [
+          // 肌耐力训练
+          {
+            path: 'endurance',
+            name: 'endurance',
+            component: () => import('@/views/record/train/endurance'),
+            meta: ['肌耐力训练']
+          },
+          // 肌肥大训练
+          {
+            path: 'hypertrophy',
+            name: 'hypertrophy',
+            component: () => import('@/views/record/train/hypertrophy'),
+            meta: ['肌肥大训练']
+          },
+          // 神经肌肉募集训练
+          {
+            path: 'neuromuscular',
+            name: 'neuromuscular',
+            component: () => import('@/views/record/train/neuromuscular'),
+            meta: ['神经肌肉募集训练']
+          },
+          // 爆发力训练
+          {
+            path: 'explosiveness',
+            name: 'train-explosiveness',
+            component: () => import('@/views/record/train/explosiveness'),
+            meta: ['爆发力训练']
+          }
+        ]
+      }
     ]
   },
 

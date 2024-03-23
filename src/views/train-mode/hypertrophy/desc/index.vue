@@ -1,23 +1,23 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2024-02-04 11:42:36
- * @LastEditTime: 2024-03-22 11:32:27
- * @Description : 肌耐力训练-介绍与参数设置
+ * @LastEditTime: 2024-03-22 11:43:18
+ * @Description : 肌肥大训练-介绍与参数设置
 -->
 <template>
-  <div class="train-endurance-desc">
+  <div class="train-hypertrophy-desc">
     <div class="wrapper">
       <el-page-header
         class="page"
         title="返回上一页"
-        content="肌耐力训练-参数设置"
+        content="肌肥大训练-参数设置"
         @back="handleBack"
       ></el-page-header>
 
       <div class="text">
-        训练要求：建议使用50-70%RM，每组15-20次，运动节奏2-0-2
+        训练要求：建议使用70-80%RM，每组15-20次，运动节奏3-0-1
       </div>
-      <div class="text">训练组数：进行2-4组的训练，组间休息35-45s</div>
+      <div class="text">训练组数：进行3-6组的训练，组间休息35-45s</div>
 
       <!-- 参数配置 -->
       <div class="set">
@@ -40,8 +40,8 @@
               v-model="groups"
               :precision="0"
               :step="1"
-              :min="2"
-              :max="4"
+              :min="3"
+              :max="6"
             ></el-input-number>
           </div>
           <!-- 组间休息时长 -->
@@ -93,7 +93,7 @@
       <div class="rhythm">
         <div class="item">
           <span class="text">运动节奏：</span>
-          <span>2 - 0 - 2</span>
+          <span>3 - 0 - 1</span>
         </div>
       </div>
 
@@ -111,12 +111,12 @@
 
 <script>
 export default {
-  name: 'train-endurance-desc',
+  name: 'train-hypertrophy-desc',
 
   data() {
     return {
       num: 5, // 训练次数，3~20
-      groups: 2, // 训练组数，2~4
+      groups: 3, // 训练组数，3~6
       groupRestTime: 35, // 组间休息时长(s)，35~45
       backWeight: 0, // 后端配重（kg），0~165kg，（165kg接近配平）
       frontWeight: 0, // 前端配重（kg）
@@ -145,7 +145,7 @@ export default {
       this.$router.push({
         path: '/refresh',
         query: {
-          routerName: JSON.stringify('/train-endurance-desc'),
+          routerName: JSON.stringify('/train-hypertrophy-desc'),
           duration: JSON.stringify(300)
         }
       })
@@ -198,14 +198,14 @@ export default {
      */
     handleStart() {
       this.$router.push({
-        path: '/train-endurance-measure',
+        path: '/train-hypertrophy-measure',
         query: {
           num: JSON.stringify(this.num), // 训练次数
           groups: JSON.stringify(this.groups), // 训练组数
           groupRestTime: JSON.stringify(this.groupRestTime), // 组间休息时长
           weight: JSON.stringify(this.weight), // 实际配重（kg）
-          type: JSON.stringify('肌耐力训练'),
-          routerName: JSON.stringify('/train-endurance-desc')
+          type: JSON.stringify('肌肥大训练'),
+          routerName: JSON.stringify('/train-hypertrophy-desc')
         }
       })
     }
@@ -214,7 +214,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.train-endurance-desc {
+.train-hypertrophy-desc {
   width: 100%;
   height: 100%;
   @include flex(row, center, center);

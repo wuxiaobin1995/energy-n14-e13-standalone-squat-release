@@ -1,8 +1,8 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2024-02-04 10:17:59
- * @LastEditTime: 2024-03-22 11:35:30
- * @Description : 爆发力测试-数据记录
+ * @LastEditTime: 2024-03-22 16:46:55
+ * @Description : 爆发力训练-数据记录
 -->
 <template>
   <div class="explosiveness">
@@ -11,7 +11,7 @@
       <!-- 返回首页 -->
       <el-page-header
         title="返回首页"
-        content="爆发力测试"
+        content="爆发力训练"
         @back="handleToHome"
       ></el-page-header>
       <!-- 日期筛选 -->
@@ -55,25 +55,11 @@
         label="用户姓名"
         width="250"
       />
-      <!-- 峰值角速度 -->
-      <el-table-column
-        align="center"
-        prop="maxAngularVelocity"
-        label="峰值角速度（rad/s）"
-        width="165"
-      />
-      <!-- 爆发力 -->
-      <el-table-column
-        align="center"
-        prop="explosivenessVal"
-        label="爆发力（W）"
-        width="165"
-      />
-      <!-- 测试时间 -->
+      <!-- 训练时间 -->
       <el-table-column
         align="center"
         prop="pdfTime"
-        label="测试时间"
+        label="训练时间"
         sortable
       />
 
@@ -93,9 +79,6 @@
 
     <!-- 按钮组 -->
     <div class="btn">
-      <el-button class="item" type="success" @click="handleTendencyPdf"
-        >长期趋势报告</el-button
-      >
       <el-button class="item" type="primary" @click="handleRefresh"
         >刷新页面</el-button
       >
@@ -107,7 +90,7 @@
 import { initDB } from '@/db/index.js'
 
 export default {
-  name: 'test-explosiveness',
+  name: 'train-explosiveness',
 
   data() {
     return {
@@ -212,10 +195,10 @@ export default {
     initTable() {
       const db = initDB()
       this.loading = true
-      db.test_data
+      db.train_data
         .where({
           userId: this.$store.state.currentUserInfo.userId,
-          type: '爆发力测试'
+          type: '爆发力训练'
         })
         .toArray()
         .then(res => {
@@ -250,17 +233,17 @@ export default {
     getData() {
       const db = initDB()
       this.loading = true
-      db.test_data
+      db.train_data
         .where(['userId', 'type', 'pdfTime'])
         .between(
           [
             this.$store.state.currentUserInfo.userId,
-            '爆发力测试',
+            '爆发力训练',
             this.selectDateValue[0]
           ],
           [
             this.$store.state.currentUserInfo.userId,
-            '爆发力测试',
+            '爆发力训练',
             this.selectDateValue[1]
           ],
           true,
@@ -314,10 +297,10 @@ export default {
       })
         .then(() => {
           const db = initDB()
-          db.test_data
+          db.train_data
             .where({
               userId: row.userId,
-              type: '爆发力测试',
+              type: '爆发力训练',
               pdfTime: row.pdfTime
             })
             .delete()
@@ -346,25 +329,13 @@ export default {
     },
 
     /**
-     * @description: 爆发力测试-长期趋势报告
-     */
-    handleTendencyPdf() {
-      this.$router.push({
-        path: '/test-explosiveness-secular-trend-pdf',
-        query: {
-          routerName: JSON.stringify('/test-record/explosiveness')
-        }
-      })
-    },
-
-    /**
      * @description: 刷新页面
      */
     handleRefresh() {
       this.$router.push({
         path: '/refresh',
         query: {
-          routerName: JSON.stringify('/test-record/explosiveness'),
+          routerName: JSON.stringify('/train-record/explosiveness'),
           duration: JSON.stringify(300)
         }
       })

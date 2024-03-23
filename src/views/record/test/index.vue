@@ -1,20 +1,20 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2024-02-06 16:53:03
- * @LastEditTime: 2024-02-06 16:53:13
+ * @LastEditTime: 2024-03-22 11:09:12
  * @Description : 测试-数据记录
 -->
 <template>
   <div class="test-record">
     <div class="wrapper">
       <div class="btn">
-        <el-button class="item" type="danger" round plain @click="handleOneRM"
+        <el-button class="item" type="info" round plain @click="handleOneRM"
           >1RM测试</el-button
         >
 
         <el-button
           class="item"
-          type="danger"
+          type="info"
           round
           plain
           @click="handleExplosiveness"

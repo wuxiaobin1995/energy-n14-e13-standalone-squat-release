@@ -1,13 +1,13 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2024-03-20 08:41:09
- * @LastEditTime: 2024-03-22 11:03:16
- * @Description : 肌耐力训练-具体测量
+ * @LastEditTime: 2024-03-22 11:51:16
+ * @Description : 肌肥大训练-具体测量
 -->
 <template>
-  <div class="train-endurance-measure">
+  <div class="train-hypertrophy-measure">
     <div class="wrapper">
-      <div class="title">肌耐力训练</div>
+      <div class="title">肌肥大训练</div>
 
       <div class="main">
         <!-- 图形 -->
@@ -81,7 +81,7 @@ import ffi from 'ffi-napi'
 import { initDB } from '@/db/index.js'
 
 export default {
-  name: 'train-endurance-measure',
+  name: 'train-hypertrophy-measure',
 
   data() {
     return {
@@ -382,22 +382,26 @@ export default {
           ? this.$store.state.currentUserInfo.angularRange
           : 50 // 上限
         const targetDown = 0 // 下限
-        const intervalTime = 2 // 间隔时长s
+        const intervalTimeUp = 3 // 间隔时长s
+        const intervalTimeDown = 1 // 间隔时长s
 
-        const interval = parseFloat(
-          ((targetUp - targetDown) / (intervalTime * 10)).toFixed(3)
-        ) // 间隔值
+        const intervalUp = parseFloat(
+          ((targetUp - targetDown) / (intervalTimeUp * 10)).toFixed(3)
+        ) // 上升阶段间隔值
+        const intervalDown = parseFloat(
+          ((targetUp - targetDown) / (intervalTimeDown * 10)).toFixed(3)
+        ) // 下降阶段间隔值
 
         this.standardArray.push(targetDown)
         let sum = targetDown
-        for (let i = 0; i < intervalTime * 10 - 1; i++) {
-          sum = sum + interval
+        for (let i = 0; i < intervalTimeUp * 10 - 1; i++) {
+          sum = sum + intervalUp
           this.standardArray.push(sum)
         }
         sum = targetUp
-        for (let i = 0; i < intervalTime * 10; i++) {
+        for (let i = 0; i < intervalTimeDown * 10; i++) {
           this.standardArray.push(sum)
-          sum = sum - interval
+          sum = sum - intervalDown
         }
         for (let i = 0; i < 5; i++) {
           this.bgArray.push(...this.standardArray)
@@ -533,7 +537,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.train-endurance-measure {
+.train-hypertrophy-measure {
   width: 100%;
   height: 100%;
   @include flex(row, center, center);

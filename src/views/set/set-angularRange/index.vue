@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2024-01-31 16:52:11
- * @LastEditTime: 2024-02-02 17:45:01
+ * @LastEditTime: 2024-03-21 11:34:22
  * @Description : 设置运动角度范围（用于确定训练模块的最大值）
 -->
 <template>
