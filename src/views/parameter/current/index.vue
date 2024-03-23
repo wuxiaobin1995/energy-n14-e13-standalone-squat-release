@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2024-02-01 11:34:57
- * @LastEditTime: 2024-02-01 17:38:03
+ * @LastEditTime: 2024-03-23 10:27:22
  * @Description : 通用-配置
 -->
 <template>
@@ -18,7 +18,7 @@
 
       <div class="main">
         <!-- 峰值功率百分比 -->
-        <div>
+        <!-- <div>
           <el-divider>峰值功率百分比（默认是90%）</el-divider>
           <el-input-number
             v-model="maxPowerPercent"
@@ -28,7 +28,7 @@
             :precision="0"
             @change="handleSetMaxPowerPercent"
           ></el-input-number>
-        </div>
+        </div> -->
 
         <!-- 波特率 -->
         <div>

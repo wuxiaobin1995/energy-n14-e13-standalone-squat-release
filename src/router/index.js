@@ -1,7 +1,7 @@
 /*
  * @Author      : Mr.bin
  * @Date        : 2023-11-21 09:11:54
- * @LastEditTime: 2024-03-22 15:50:12
+ * @LastEditTime: 2024-03-23 10:12:25
  * @Description : 路由
  */
 import Vue from 'vue'
@@ -188,13 +188,20 @@ const routes = [
         component: () => import('@/views/train-mode/neuromuscular/measure'),
         meta: ['神经肌肉募集训练-具体测量']
       },
-      // // 爆发力训练-介绍与参数设置
-      // {
-      //   path: 'train-explosiveness-desc',
-      //   name: 'train-explosiveness-desc',
-      //   component: () => import('@/views/train-mode/explosiveness/desc'),
-      //   meta: ['爆发力训练-介绍与参数设置']
-      // },
+      // 爆发力训练-介绍与参数设置
+      {
+        path: 'train-explosiveness-desc',
+        name: 'train-explosiveness-desc',
+        component: () => import('@/views/train-mode/explosiveness/desc'),
+        meta: ['爆发力训练-介绍与参数设置']
+      },
+      // 爆发力训练-具体测量
+      {
+        path: 'train-explosiveness-measure',
+        name: 'train-explosiveness-measure',
+        component: () => import('@/views/train-mode/explosiveness/measure'),
+        meta: ['爆发力训练-具体测量']
+      },
 
       /* 数据记录 */
       // 测试

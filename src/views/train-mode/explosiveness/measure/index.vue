@@ -2,12 +2,12 @@
  * @Author      : Mr.bin
  * @Date        : 2024-03-20 08:41:09
  * @LastEditTime: 2024-03-23 10:10:37
- * @Description : 神经肌肉募集训练-具体测量
+ * @Description : 爆发力训练-具体测量
 -->
 <template>
-  <div class="train-neuromuscular-measure">
+  <div class="train-explosiveness-measure">
     <div class="wrapper">
-      <div class="title">神经肌肉募集训练</div>
+      <div class="title">爆发力训练</div>
 
       <div class="main">
         <!-- 图形 -->
@@ -82,7 +82,7 @@ import ffi from 'ffi-napi'
 import { calculateData } from '../utils/calculate-data.js'
 
 export default {
-  name: 'train-neuromuscular-measure',
+  name: 'train-explosiveness-measure',
 
   data() {
     return {
@@ -506,7 +506,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.train-neuromuscular-measure {
+.train-explosiveness-measure {
   width: 100%;
   height: 100%;
   @include flex(row, center, center);

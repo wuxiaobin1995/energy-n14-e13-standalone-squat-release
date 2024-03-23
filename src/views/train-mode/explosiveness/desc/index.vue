@@ -1,21 +1,21 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2024-02-04 11:42:36
- * @LastEditTime: 2024-03-23 09:17:48
- * @Description : 神经肌肉募集训练-介绍与参数设置
+ * @LastEditTime: 2024-03-23 10:19:24
+ * @Description : 爆发力训练-介绍与参数设置
 -->
 <template>
-  <div class="train-neuromuscular-desc">
+  <div class="train-explosiveness-desc">
     <div class="wrapper">
       <el-page-header
         class="page"
         title="返回上一页"
-        content="神经肌肉募集训练-参数设置"
+        content="爆发力训练-参数设置"
         @back="handleBack"
       ></el-page-header>
 
-      <div class="text">训练要求：建议使用≥85%RM，使用爆发力，每组2-5次</div>
-      <div class="text">训练组数：进行3-6组的训练，组间休息3~5min</div>
+      <div class="text">训练要求：使用爆发力，每组3-20次</div>
+      <div class="text">训练组数：进行3-10组的训练，组间休息30~60s</div>
 
       <!-- 参数配置 -->
       <div class="set">
@@ -27,8 +27,8 @@
               v-model="num"
               :precision="0"
               :step="1"
-              :min="2"
-              :max="5"
+              :min="3"
+              :max="20"
             ></el-input-number>
           </div>
           <!-- 训练组数 -->
@@ -39,7 +39,7 @@
               :precision="0"
               :step="1"
               :min="3"
-              :max="6"
+              :max="10"
             ></el-input-number>
           </div>
           <!-- 组间休息时长 -->
@@ -49,8 +49,8 @@
               v-model="groupRestTime"
               :precision="0"
               :step="10"
-              :min="180"
-              :max="300"
+              :min="30"
+              :max="60"
             ></el-input-number>
           </div>
         </div>
@@ -102,13 +102,13 @@
 
 <script>
 export default {
-  name: 'train-neuromuscular-desc',
+  name: 'train-explosiveness-desc',
 
   data() {
     return {
-      num: 5, // 训练次数，2~5
-      groups: 3, // 训练组数，3~6
-      groupRestTime: 180, // 组间休息时长(s)，180~300
+      num: 5, // 训练次数，3~20
+      groups: 3, // 训练组数，3~10
+      groupRestTime: 30, // 组间休息时长(s)，30~60
       backWeight: 0, // 后端配重（kg），0~165kg，（165kg接近配平）
       frontWeight: 0, // 前端配重（kg）
       weight: 0 // 实际配重（kg）
@@ -136,7 +136,7 @@ export default {
       this.$router.push({
         path: '/refresh',
         query: {
-          routerName: JSON.stringify('/train-neuromuscular-desc'),
+          routerName: JSON.stringify('/train-explosiveness-desc'),
           duration: JSON.stringify(300)
         }
       })
@@ -189,14 +189,14 @@ export default {
      */
     handleStart() {
       this.$router.push({
-        path: '/train-neuromuscular-measure',
+        path: '/train-explosiveness-measure',
         query: {
           num: JSON.stringify(this.num), // 训练次数
           groups: JSON.stringify(this.groups), // 训练组数
           groupRestTime: JSON.stringify(this.groupRestTime), // 组间休息时长
           weight: JSON.stringify(this.weight), // 实际配重（kg）
-          type: JSON.stringify('神经肌肉募集训练'),
-          routerName: JSON.stringify('/train-neuromuscular-desc')
+          type: JSON.stringify('爆发力训练'),
+          routerName: JSON.stringify('/train-explosiveness-desc')
         }
       })
     }
@@ -205,7 +205,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.train-neuromuscular-desc {
+.train-explosiveness-desc {
   width: 100%;
   height: 100%;
   @include flex(row, center, center);

@@ -1,7 +1,7 @@
 /*
  * @Author      : Mr.bin
  * @Date        : 2022-07-28 09:41:07
- * @LastEditTime: 2023-11-21 09:36:40
+ * @LastEditTime: 2024-03-23 10:29:38
  * @Description : vue.config.js
  */
 
@@ -9,8 +9,8 @@ const projectName = 'energy-n14-e13-standalone-squat-release' // 项目名称，
 const softwareName = '蹲起释放反馈系统-单机版' // 软件名称
 
 // const logo = './public/ico/logo/medical.ico' // 软件图标（医疗）
-const logo = './public/ico/logo/power.ico' // 软件图标（运动）
-// const logo = './public/ico/logo/common.ico' // 软件图标（通用）
+// const logo = './public/ico/logo/power.ico' // 软件图标（运动）
+const logo = './public/ico/logo/common.ico' // 软件图标（通用）
 
 module.exports = {
   /* 全局css配置 */
