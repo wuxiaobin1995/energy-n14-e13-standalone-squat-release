@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2024-01-31 16:44:51
- * @LastEditTime: 2024-02-06 17:18:13
+ * @LastEditTime: 2024-03-26 10:46:15
  * @Description : 导出所选用户的数据（测试、训练、......）
 -->
 <template>
@@ -301,6 +301,10 @@ export default {
                 weight: '体重(kg)',
                 birthday: '出生日期',
                 type: '类型',
+                num: '训练次数',
+                groups: '训练组数',
+                completion: '完成度%',
+                allAngularRangeArray: '源数据',
                 pdfTime: '测量时间'
               }
               const tHeader = Object.values(excelTitle)
