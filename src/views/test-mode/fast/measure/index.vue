@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2024-02-01 11:34:57
- * @LastEditTime: 2024-02-06 15:31:55
+ * @LastEditTime: 2024-03-26 11:38:03
  * @Description : 快速测试-具体测量
 -->
 <template>
@@ -56,7 +56,7 @@
           </div>
           <div class="item">
             <span>实际配重（kg）：</span>
-            <span>{{ weight }}</span>
+            <span>{{ counterWeight }}</span>
           </div>
         </div>
 
@@ -124,7 +124,7 @@ export default {
     return {
       backWeight: 0, // 后端配重（kg），0~165kg，（165kg接近配平）
       frontWeight: 0, // 前端配重（kg）
-      weight: 0, // 实际配重（kg）
+      counterWeight: 0, // 实际配重（kg）
       num: 1, // 次数
 
       centerDialogVisible: false,
@@ -176,7 +176,7 @@ export default {
       const L3 = 0.8
       const L4 = 0.73
       const L5 = 0.12
-      this.weight = parseFloat(
+      this.counterWeight = parseFloat(
         (
           ((((L4 + L5) / L4) *
             ((L2 / L3) * this.frontWeight -
@@ -195,7 +195,7 @@ export default {
     handleConfirm() {
       /* 计算结果 */
       this.countWeight()
-      this.oneRM = parseInt(this.weight * (1 + (this.num - 1) / 30))
+      this.oneRM = parseInt(this.counterWeight * (1 + (this.num - 1) / 30))
 
       /* 保存数据库 */
       this.pdfTime = this.$moment().format('YYYY-MM-DD HH:mm:ss')

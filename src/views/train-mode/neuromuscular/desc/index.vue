@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2024-02-04 11:42:36
- * @LastEditTime: 2024-03-23 09:17:48
+ * @LastEditTime: 2024-03-26 11:40:39
  * @Description : 神经肌肉募集训练-介绍与参数设置
 -->
 <template>
@@ -83,7 +83,7 @@
           <!-- 实际配重 -->
           <div class="item">
             <span class="text">实际配重（kg）：</span>
-            <span class="text">{{ weight }}</span>
+            <span class="text">{{ counterWeight }}</span>
           </div>
         </div>
       </div>
@@ -111,7 +111,7 @@ export default {
       groupRestTime: 180, // 组间休息时长(s)，180~300
       backWeight: 0, // 后端配重（kg），0~165kg，（165kg接近配平）
       frontWeight: 0, // 前端配重（kg）
-      weight: 0 // 实际配重（kg）
+      counterWeight: 0 // 实际配重（kg）
     }
   },
 
@@ -171,7 +171,7 @@ export default {
       const L3 = 0.8
       const L4 = 0.73
       const L5 = 0.12
-      this.weight = parseFloat(
+      this.counterWeight = parseFloat(
         (
           ((((L4 + L5) / L4) *
             ((L2 / L3) * this.frontWeight -
@@ -194,7 +194,7 @@ export default {
           num: JSON.stringify(this.num), // 训练次数
           groups: JSON.stringify(this.groups), // 训练组数
           groupRestTime: JSON.stringify(this.groupRestTime), // 组间休息时长
-          weight: JSON.stringify(this.weight), // 实际配重（kg）
+          counterWeight: JSON.stringify(this.counterWeight), // 实际配重（kg）
           type: JSON.stringify('神经肌肉募集训练'),
           routerName: JSON.stringify('/train-neuromuscular-desc')
         }

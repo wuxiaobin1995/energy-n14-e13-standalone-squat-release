@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2024-02-06 10:15:49
- * @LastEditTime: 2024-03-22 16:36:16
+ * @LastEditTime: 2024-03-26 11:37:08
  * @Description : 爆发力测试-具体测量
 -->
 <template>
@@ -55,7 +55,7 @@
         </div>
         <div class="item">
           <span>实际配重（kg）：</span>
-          <span>{{ weight }}</span>
+          <span>{{ counterWeight }}</span>
         </div>
       </div>
 
@@ -150,7 +150,7 @@ export default {
 
       backWeight: 0, // 后端配重（kg），0~165kg，（165kg接近配平）
       frontWeight: 0, // 前端配重（kg）
-      weight: 0, // 实际配重（kg）
+      counterWeight: 0, // 实际配重（kg）
 
       centerDialogVisible: false,
       isStart: true, // 是否开始
@@ -308,7 +308,7 @@ export default {
       const L3 = 0.8
       const L4 = 0.73
       const L5 = 0.12
-      this.weight = parseFloat(
+      this.counterWeight = parseFloat(
         (
           ((((L4 + L5) / L4) *
             ((L2 / L3) * this.frontWeight -
@@ -374,7 +374,7 @@ export default {
       /* 调用数据计算方法，算出结果 */
       const calculateDataResult = calculateData(
         this.angularVelocityArray, // 角速度数组
-        parseFloat(((this.weight / 0.73) * 1.7).toFixed(0)) // 传感器所在点的负重
+        parseFloat(((this.counterWeight / 0.73) * 1.7).toFixed(0)) // 传感器所在点的负重
       )
       this.explosivenessVal = calculateDataResult.maxPower // 爆发力指标（峰值功率[W]）
       this.maxAngularVelocity = calculateDataResult.maxAngularVelocity // 峰值角速度[rad/s]

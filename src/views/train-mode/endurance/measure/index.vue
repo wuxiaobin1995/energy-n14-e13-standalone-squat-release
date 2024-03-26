@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2024-03-20 08:41:09
- * @LastEditTime: 2024-03-22 11:03:16
+ * @LastEditTime: 2024-03-26 11:39:21
  * @Description : 肌耐力训练-具体测量
 -->
 <template>
@@ -27,7 +27,7 @@
           </div>
           <div class="item">
             <div class="text">负重kg</div>
-            <div class="value">{{ weight }}</div>
+            <div class="value">{{ counterWeight }}</div>
           </div>
         </div>
       </div>
@@ -89,7 +89,7 @@ export default {
       num: JSON.parse(this.$route.query.num), // 训练次数
       groups: JSON.parse(this.$route.query.groups), // 训练组数
       groupRestTime: JSON.parse(this.$route.query.groupRestTime), // 组间休息时长
-      weight: JSON.parse(this.$route.query.weight), // 实际配重（kg）
+      counterWeight: JSON.parse(this.$route.query.counterWeight), // 实际配重（kg）
       type: JSON.parse(this.$route.query.type),
       routerName: JSON.parse(this.$route.query.routerName),
 
@@ -497,7 +497,7 @@ export default {
           num: this.num, // 训练次数
           groups: this.groups, // 训练组数
           groupRestTime: this.groupRestTime, // 组间休息时长
-          weight: this.weight, // 实际配重（kg）
+          counterWeight: this.counterWeight, // 实际配重（kg）
 
           standardArray: this.standardArray, // 基础参考曲线
           allAngularRangeArray: this.allAngularRangeArray, // 完整实时角度数组

@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2024-03-20 08:41:09
- * @LastEditTime: 2024-03-23 10:10:37
+ * @LastEditTime: 2024-03-26 11:40:48
  * @Description : 神经肌肉募集训练-具体测量
 -->
 <template>
@@ -28,7 +28,7 @@
           </div>
           <div class="item">
             <div class="text">负重kg</div>
-            <div class="value">{{ weight }}</div>
+            <div class="value">{{ counterWeight }}</div>
           </div>
         </div>
       </div>
@@ -90,7 +90,7 @@ export default {
       num: JSON.parse(this.$route.query.num), // 训练次数
       groups: JSON.parse(this.$route.query.groups), // 训练组数
       groupRestTime: JSON.parse(this.$route.query.groupRestTime), // 组间休息时长
-      weight: JSON.parse(this.$route.query.weight), // 实际配重（kg）
+      counterWeight: JSON.parse(this.$route.query.counterWeight), // 实际配重（kg）
       type: JSON.parse(this.$route.query.type),
       routerName: JSON.parse(this.$route.query.routerName),
 
@@ -340,7 +340,7 @@ export default {
                     /* 调用数据计算方法，算出结果 */
                     const calculateDataResult = calculateData(
                       this.angularVelocityArray, // 角速度数组
-                      parseFloat(((this.weight / 0.73) * 1.7).toFixed(0)) // 传感器所在点的负重
+                      parseFloat(((this.counterWeight / 0.73) * 1.7).toFixed(0)) // 传感器所在点的负重
                     )
                     this.explosivenessVal = calculateDataResult.maxPower // 爆发力指标（峰值功率[W]）
                     this.maxAngularVelocity =
