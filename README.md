@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2023-11-21 09:12:16
- * @LastEditTime: 2024-03-26 09:30:41
+ * @LastEditTime: 2024-08-28 11:51:44
  * @Description : energy-n14-e13-standalone-squat-release
 -->
 
@@ -14,4 +14,4 @@
 
 - 用功率代表爆发力指标
 
-- y 轴对着人
+- y 轴对着人，装在底部
