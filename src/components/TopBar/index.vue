@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2022-07-28 10:25:39
- * @LastEditTime: 2024-01-31 17:29:41
+ * @LastEditTime: 2024-10-31 16:30:33
  * @Description : 顶部栏
 -->
 <template>
@@ -14,7 +14,7 @@
         fit="scale-down"
         @click.native="handleToHome"
       ></el-image>
-      <span class="text">蹲起释放反馈系统 v2.0.0</span>
+      <span class="text">蹲起释放反馈系统 v3.0.0</span>
     </div>
 
     <!-- 其他 -->
